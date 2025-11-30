@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>X-O Arena : Think Play Win</title>
+<link rel="icon" type="image/x-icon" href="assets/xo-arena.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app" id="app" data-theme="light">
+  <div class="panel board-wrap">
+    <header class="app-head">
+      <div class="title">
+        
+        <div><h1>Tic-Tac-Toe</h1><p class="lead">Play with Bot or Friends</p></div>
+      </div>
+      <div style="display:flex;gap:8px;align-items:center">
+        <label style="display:inline-flex;gap:8px;align-items:center">
+          <input id="themeToggle" type="checkbox" aria-label="Dark mode toggle" style="display: none;">
+          <span id="themeLabel" style="font-weight:700;cursor: pointer;">🌞</span>
+        </label>
+      </div>
+    </header>
+
+    <div class="status panel" style="display:flex;flex-direction:column;gap:8px">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <div class="turn" id="turnIndicator">Player X's turn</div>
+        <div class="controls">
+          <button id="modeToggle" class="btn small">Mode: Bot</button>
+          <select id="aiLevel" class="small">
+            <option value="hard">Hard</option>
+            <option value="easy">Easy</option>
+          </select>
+          <button id="soundToggle" class="btn small">🔊 Sound</button>
+        </div>
+      </div>
+
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <div class="muted">Click a cell to play. X always starts.</div>
+        <div style="display:flex;gap:8px">
+          <button id="resetBtn" class="btn">Reset Board</button>
+          <button id="resetScoreBtn" class="btn">Reset Score</button>
+          <button id="newGame" class="btn">New Game</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="board panel" id="board" aria-label="Tic tac toe board">
+      <div class="svg-overlay"><svg id="win-line" xmlns="http://www.w3.org/2000/svg"></svg></div>
+      <div class="cell empty" data-index="0" role="button" aria-label="cell 1"><span class="mark"></span></div>
+      <div class="cell empty" data-index="1" role="button" aria-label="cell 2"><span class="mark"></span></div>
+      <div class="cell empty" data-index="2" role="button" aria-label="cell 3"><span class="mark"></span></div>
+      <div class="cell empty" data-index="3" role="button" aria-label="cell 4"><span class="mark"></span></div>
+      <div class="cell empty" data-index="4" role="button" aria-label="cell 5"><span class="mark"></span></div>
+      <div class="cell empty" data-index="5" role="button" aria-label="cell 6"><span class="mark"></span></div>
+      <div class="cell empty" data-index="6" role="button" aria-label="cell 7"><span class="mark"></span></div>
+      <div class="cell empty" data-index="7" role="button" aria-label="cell 8"><span class="mark"></span></div>
+      <div class="cell empty" data-index="8" role="button" aria-label="cell 9"><span class="mark"></span></div>
+    </div>
+
+    
+  </div>
+
+  <!-- Sidebar -->
+  <aside class="panel sidebar">
+    <div class="group">
+      <div class="label">Scoreboard</div>
+      <div class="scoreboard" id="scoreboard">
+        <div class="score-card"><div class="muted">Player X</div><strong id="scoreX">0</strong></div>
+        <div class="score-card"><div class="muted">Player O</div><strong id="scoreO">0</strong></div>
+        <div class="score-card"><div class="muted">Draws</div><strong id="scoreD">0</strong></div>
+        <div class="score-card"><div class="muted">Mode</div><strong id="modeLabel">Bot - Hard</strong></div>
+      </div>
+    </div>
+
+
+
+    <div class="group">
+      <div class="label">History</div>
+      <div class="history-panel" id="historyPanel"></div>
+      <div style="display:flex;gap:8px;margin-top:6px"><button id="clearHistory" class="btn small">Clear History</button></div>
+    </div>
+  </aside>
+</div>
+
+<!-- Winner banner & confetti container -->
+<div id="winnerBanner" class="winner-banner" role="status" aria-live="polite">
+  <div id="winnerText">Player X Wins!</div>
+  <button id="closeBanner" class="btn small" style="margin-left:8px">Close</button>
+</div>
+<div id="confettiRoot"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
